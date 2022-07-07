@@ -49,3 +49,47 @@ Selector labels
 app.kubernetes.io/name: {{ include "regenbogen-ice.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{/*
+Define the token secret name
+*/}}
+{{- define "regenbogen-ice.tokenSecret" -}}
+{{- if not .Values.bot.token}}
+{{- required "bot.existingSecret must be set when no token is defined." .Values.bot.existingSecret | trunc 63 }}
+{{- else }}
+{{- .Release.Name }}-secret
+{{- end }}
+{{- end }}
+
+{{/*
+Define the token secret key
+*/}}
+{{- define "regenbogen-ice.tokenSecretKey" -}}
+{{- if not .Values.bot.token}}
+{{- required "bot.existingSecretKey must be set when no token is defined." .Values.bot.existingSecretKey }}
+{{- else }}
+{{- print "token" }}
+{{- end }}
+{{- end }}
+
+{{/*
+Define the sentry secret name
+*/}}
+{{- define "regenbogen-ice.sentrySecret" -}}
+{{- if not .Values.bot.sentry.dsn -}}
+{{- required "bot.sentry.existingSecret must be set when no dsn is defined." .Values.bot.existingSecret | trunc 63 }}
+{{- else }}
+{{- .Release.Name }}-secret
+{{- end }}
+{{- end }}
+
+{{/*
+Define the sentry dsn secret key
+*/}}
+{{- define "regenbogen-ice.sentrySecretKey"}}
+{{- if not .Values.bot.sentry.dsn -}}
+{{- required "bot.sentry.existingSecretKey must be set when no dsn is defined" .Values.bot.sentry.existingSecretKey }}
+{{- else }}
+{{- print "sentry_dsn"}}
+{{- end }}
+{{- end }}

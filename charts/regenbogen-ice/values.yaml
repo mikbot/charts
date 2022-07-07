@@ -47,12 +47,26 @@ affinity: {}
 
 bot:
   ## @param bot.token The discord token to use
+  ## Will be ignored when bot.existingSecret and bot.existingSecretKey are set
   ##
   token: ""
+  ## @param bot.existingSecret The existing secret to use for the token
+  ##
+  existingSecret: ""
+  ## @param bot.existingSecretKey The existing secret key to use for the token
+  ##
+  existingSecretKey: ""
   sentry:
     ## @param bot.sentry.enabled Enable mikbots sentry integration.
     ##
     enabled: false
     ## @param bot.sentry.dsn The sentry dsn to use
+    ## Will be ignored when bot.sentry.existingSecret and bot.sentry.existingSecretKey are set
     ##
     dsn: ""
+    ## @param bot.sentry.existingSecret The existing secret to use for the sentry dsn
+    ##
+    existingSecret: ""
+    ## @param bot.existingSecretKey The existing secret key to use for the sentry dsn
+    ##
+    existingSecretKey: ""

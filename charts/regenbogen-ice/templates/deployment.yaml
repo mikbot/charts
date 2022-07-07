@@ -36,14 +36,14 @@ spec:
             - name: DISCORD_TOKEN
               valueFrom:
                 secretKeyRef:
-                  key: token
-                  name: {{ include "regenbogen-ice.fullname" . }}
+                  key: {{ include "regenbogen-ice.tokenSecretKey" . }}
+                  name: {{ include "regenbogen-ice.tokenSecret" . }}
             - name: SENTRY_DSN
               {{- if .Values.bot.sentry.enabled }}
               valueFrom:
                 secretKeyRef:
-                  key: sentry_dsn
-                  name: {{ include "regenbogen-ice.fullname" . }}
+                  key: {{ include "regenbogen-ice.sentrySecretKey" . }}
+                  name: {{ include "regenbogen-ice.sentrySecret" . }}
               {{- else }}
               value: ""
               {{- end}}
