@@ -3,6 +3,16 @@ entries:
   regenbogen-ice:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2022-07-07T14:31:21.172617032Z"
+    description: Discord bot for tracking various german high speed trains.
+    digest: c4c032b66bb6243b9a2166ccc1cd55c59e23baa177de036bbe381b329fe803fa
+    name: regenbogen-ice
+    type: application
+    urls:
+    - https://github.com/mikbot/charts/releases/download/regenbogen-ice-0.2.0/regenbogen-ice-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2022-07-06T21:10:01.006231278Z"
     description: Discord bot for tracking various german high speed trains.
     digest: 603ebd1425f48a8c887b97d283fa3806b4b5a9e70a2c8843d040931955ef3da3
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/mikbot/charts/releases/download/regenbogen-ice-0.1.0/regenbogen-ice-0.1.0.tgz
     version: 0.1.0
-generated: "2022-07-06T21:10:01.006237278Z"
+generated: "2022-07-07T14:31:21.172633232Z"
