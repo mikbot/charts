@@ -15,5 +15,6 @@
       "depNameTemplate": "ghcr.io/mikbot/regenbogen-ice",
       "datasourceTemplate": "docker"
     }
-  ]
+  ],
+  "bumpVersion": "minor"
 }
