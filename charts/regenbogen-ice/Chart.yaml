@@ -1,6 +1,15 @@
 apiVersion: v2
 name: regenbogen-ice
 description: Discord bot for tracking various german high speed trains.
+sources:
+  - https://github.com/mikbot/regenbogen-ice
+  - https://github.com/mikbot/charts
+keywords:
+  - trains
+  - discord
+  - regenbogen-ice
+home: https://github.com/mikbot/regenbogen-ice
+icon: https://regenbogen-ice.de/images/icon-bg-400.png
 
 # A chart can be either an 'application' or a 'library' chart.
 #
