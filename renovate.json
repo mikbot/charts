@@ -10,7 +10,7 @@
         "^charts\\/regenbogen-ice\\/Chart\\.yaml$"
       ],
       "matchStrings": [
-        "appVersion: '(?<currentValue>.*?)'\\s+"
+        "appVersion: \"(?<currentValue>.*?)\"\\s+"
       ],
       "depNameTemplate": "ghcr.io/mikbot/regenbogen-ice",
       "datasourceTemplate": "docker"
