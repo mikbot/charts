@@ -43,7 +43,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: {{ include "regenbogen-ice.sentrySecretKey" . }}
-                  name: {{ include "regenbogen-ice.sentrySecret" . }}
+                  name: {{ include "regenbogen-ice.sentrySecretName" . }}
               {{- else }}
               value: ""
               {{- end}}
