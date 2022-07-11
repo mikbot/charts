@@ -37,7 +37,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: {{ include "regenbogen-ice.tokenSecretKey" . }}
-                  name: {{ include "regenbogen-ice.tokenSecret" . }}
+                  name: {{ include "regenbogen-ice.tokenSecretName" . }}
             - name: SENTRY_DSN
               {{- if .Values.bot.sentry.enabled }}
               valueFrom:

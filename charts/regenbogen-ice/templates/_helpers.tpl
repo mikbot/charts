@@ -51,45 +51,54 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
-Define the token secret name
+Return true if a secet object should be created
 */}}
-{{- define "regenbogen-ice.tokenSecret" -}}
-{{- if not .Values.bot.token}}
-{{- required "bot.existingSecret must be set when no token is defined." .Values.bot.existingSecret | trunc 63 }}
-{{- else }}
-{{- .Release.Name }}-secret
-{{- end }}
-{{- end }}
+{{- define "regenbogen-ice.createSecret" -}}
+{{- if not (or .Values.bot.existingSecret .Values.bot.sentry.existingSecret) -}}
+    {{- true -}}
+{{- end -}}
+{{- end -}}
 
 {{/*
-Define the token secret key
+Get the token secret.
+*/}}
+{{- define "regenbogen-ice.tokenSecretName" -}}
+{{- if .Values.bot.existingSecret -}}
+    {{- printf "%s" (tpl .Values.bot.existingSecret $) -}}
+{{- else -}}
+    {{- printf "%s" (include "regenbogen-ice.fullname" .) -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Get the sentry dsn secret.
+*/}}
+{{- define "regenbogen-ice.sentrySecretName" -}}
+{{- if .Values.bot.existingSecret -}}
+    {{- printf "%s" (tpl .Values.bot.sentry.existingSecret $) -}}
+{{- else -}}
+    {{- printf "%s" (include "regenbogen-ice.fullname" .) -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Get the token key.
 */}}
 {{- define "regenbogen-ice.tokenSecretKey" -}}
-{{- if not .Values.bot.token}}
-{{- required "bot.existingSecretKey must be set when no token is defined." .Values.bot.existingSecretKey }}
-{{- else }}
-{{- print "token" }}
-{{- end }}
-{{- end }}
+{{- if .Values.bot.existingSecret -}}
+    {{- printf "%s" (tpl .Values.bot.existingSecretKey $) -}}
+{{- else -}}
+    {{- "token" -}}
+{{- end -}}
+{{- end -}}
 
 {{/*
-Define the sentry secret name
+Get the sentry dsn key.
 */}}
-{{- define "regenbogen-ice.sentrySecret" -}}
-{{- if not .Values.bot.sentry.dsn -}}
-{{- required "bot.sentry.existingSecret must be set when no dsn is defined." .Values.bot.existingSecret | trunc 63 }}
-{{- else }}
-{{- .Release.Name }}-secret
-{{- end }}
-{{- end }}
-
-{{/*
-Define the sentry dsn secret key
-*/}}
-{{- define "regenbogen-ice.sentrySecretKey"}}
-{{- if not .Values.bot.sentry.dsn -}}
-{{- required "bot.sentry.existingSecretKey must be set when no dsn is defined" .Values.bot.sentry.existingSecretKey }}
-{{- else }}
-{{- print "sentry_dsn"}}
-{{- end }}
-{{- end }}
+{{- define "regenbogen-ice.sentrySecretKey" -}}
+{{- if .Values.bot.sentry.existingSecret -}}
+    {{- printf "%s" (tpl .Values.bot.sentry.existingSecretKey $) -}}
+{{- else -}}
+    {{- "sentry_dsn" -}}
+{{- end -}}
+{{- end -}}
