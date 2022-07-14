@@ -47,6 +47,23 @@ spec:
               {{- else }}
               value: ""
               {{- end}}
+            - name: MONGO_USER
+              value: {{ .Values.mongodb.auth.rootUser }}
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: mongodb-root-password
+                  name: mongo-secret
+            - name: MONGO_HOST
+              value: {{ include "mongodb.fullname" .Subcharts.mongodb }}
+            - name: MONGO_URL
+              value: "mongodb://$(MONGO_USER):$(MONGO_PASSWORD)@$(MONGO_HOST)"
+            - name: MONGO_DATABASE
+              value: {{ .Values.bot.database }}
+      initContainers:
+        - name: wait-mongodb
+          image: busybox:1.35
+          command: [ 'sh', '-c', "until nslookup {{ include "mongodb.fullname" .Subcharts.mongodb }}.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for {{ include "mongodb.fullname" .Subcharts.mongodb }}; sleep 2; done" ]
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

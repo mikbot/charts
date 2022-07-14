@@ -56,6 +56,9 @@ bot:
   ## @param bot.existingSecretKey The existing secret key to use for the token
   ##
   existingSecretKey: ""
+  ## @param bot.database The bots default database to use
+  ##
+  database: bot
   sentry:
     ## @param bot.sentry.enabled Enable mikbots sentry integration.
     ##
@@ -70,3 +73,7 @@ bot:
     ## @param bot.existingSecretKey The existing secret key to use for the sentry dsn
     ##
     existingSecretKey: ""
+
+mongodb:
+  auth:
+    existingSecret: mongo-secret
