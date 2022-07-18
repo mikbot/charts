@@ -2,6 +2,29 @@ apiVersion: v1
 entries:
   regenbogen-ice:
   - apiVersion: v2
+    appVersion: 0.4.6
+    created: "2022-07-18T19:07:14.980951827Z"
+    dependencies:
+    - name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.26
+    description: Discord bot for tracking various german high speed trains.
+    digest: c5e047e5db5329c816980685c39da7f8490f797c3e00bf497fe7096eeca4a705
+    home: https://github.com/mikbot/regenbogen-ice
+    icon: https://regenbogen-ice.de/images/icon-bg-400.png
+    keywords:
+    - trains
+    - discord
+    - regenbogen-ice
+    name: regenbogen-ice
+    sources:
+    - https://github.com/mikbot/regenbogen-ice
+    - https://github.com/mikbot/charts
+    type: application
+    urls:
+    - https://github.com/mikbot/charts/releases/download/regenbogen-ice-0.5.9/regenbogen-ice-0.5.9.tgz
+    version: 0.5.9
+  - apiVersion: v2
     appVersion: 0.4.5
     created: "2022-07-18T19:00:21.247220151Z"
     dependencies:
@@ -291,4 +314,4 @@ entries:
     urls:
     - https://github.com/mikbot/charts/releases/download/regenbogen-ice-0.1.0/regenbogen-ice-0.1.0.tgz
     version: 0.1.0
-generated: "2022-07-18T19:00:21.247351254Z"
+generated: "2022-07-18T19:07:14.981060729Z"
