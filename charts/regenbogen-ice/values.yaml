@@ -76,4 +76,4 @@ bot:
 
 mongodb:
   auth:
-    existingSecret: mongo-secret
+    enabled: false

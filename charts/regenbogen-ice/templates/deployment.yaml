@@ -47,17 +47,10 @@ spec:
               {{- else }}
               value: ""
               {{- end}}
-            - name: MONGO_USER
-              value: {{ .Values.mongodb.auth.rootUser }}
-            - name: MONGO_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key: mongodb-root-password
-                  name: mongo-secret
             - name: MONGO_HOST
               value: {{ include "mongodb.fullname" .Subcharts.mongodb }}
             - name: MONGO_URL
-              value: "mongodb://$(MONGO_USER):$(MONGO_PASSWORD)@$(MONGO_HOST)"
+              value: "mongodb://$(MONGO_HOST)"
             - name: MONGO_DATABASE
               value: {{ .Values.bot.database }}
           ports:
