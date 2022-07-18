@@ -53,6 +53,8 @@ spec:
               value: "mongodb://$(MONGO_HOST)"
             - name: MONGO_DATABASE
               value: {{ .Values.bot.database }}
+            - name: WEB_SERVER_HOST
+              value: "0.0.0.0"
           ports:
             - name: liveness-port
               containerPort: 8080
